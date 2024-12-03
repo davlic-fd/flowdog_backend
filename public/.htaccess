@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Ustaw root aplikacji Symfony na katalog "public"
+    RewriteBase /
+
+    # Przekierowanie do index.php, jeśli plik lub katalog nie istnieje
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Obsługa błędów
+ErrorDocument 404 /index.php
+ErrorDocument 500 /index.php
